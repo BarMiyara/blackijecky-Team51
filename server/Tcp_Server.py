@@ -1,8 +1,7 @@
-# server/tcp_server.py
 import socket
 import threading
 
-from common.protocol import recv_exact, unpack_request
+from common.protocol import Protocol
 from server.Game_Session import GameSession
 
 
@@ -24,8 +23,8 @@ class TCPServer:
     def _handle_client(self, conn: socket.socket, addr) -> None:
         peer = f"{addr[0]}:{addr[1]}"
         try:
-            req = recv_exact(conn, self.REQUEST_LEN)
-            rounds, client_name = unpack_request(req)
+            req = Protocol.recv_exact(conn, self.REQUEST_LEN)
+            rounds, client_name = Protocol.unpack_request(req)
 
             print(f"[{peer}] {client_name} requested {rounds} rounds")
 

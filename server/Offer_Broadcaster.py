@@ -1,9 +1,8 @@
-# server/offer_broadcaster.py
 import socket
 import threading
 import time
 
-from common.protocol import UDP_PORT, pack_offer
+from common.protocol import Protocol
 
 
 class OfferBroadcaster:
@@ -27,10 +26,10 @@ class OfferBroadcaster:
             pass
 
     def _loop(self) -> None:
-        pkt = pack_offer(self.tcp_port, self.team_name)
+        pkt = Protocol.pack_offer(self.tcp_port, self.team_name)
         while not self._stop.is_set():
             try:
-                self.sock.sendto(pkt, ("255.255.255.255", UDP_PORT))
+                self.sock.sendto(pkt, ("255.255.255.255", Protocol.UDP_PORT))
             except Exception:
                 pass
             time.sleep(1.0)
