@@ -8,12 +8,14 @@ from typing import List
 SUITS = ["Heart", "Diamond", "Club", "Spade"]
 RANKS = list(range(1, 14))
 
+
 @dataclass(frozen=True)
 class Card:
     rank: int
     suit: int
 
     def value(self) -> int:
+        # Assignment rules: Ace is always 11
         if self.rank == 1:
             return 11
         if self.rank >= 11:
@@ -21,6 +23,7 @@ class Card:
         return self.rank
 
     def encode3(self) -> bytes:
+        # 2 bytes rank (01-13), 1 byte suit (0-3)
         return struct.pack("!HB", self.rank, self.suit)
 
     @staticmethod
@@ -33,31 +36,36 @@ class Card:
         suit_str = SUITS[self.suit] if 0 <= self.suit < 4 else f"Suit({self.suit})"
         return f"{rank_str} of {suit_str}"
 
+
 class Deck:
-    """
-    a pack of 52 playing cards
-    """
+    """A pack of 52 playing cards."""
 
     def __init__(self, seed: int | None = None) -> None:
-        if seed is not None:
-            random.seed(seed)
-
+        # Use a private RNG so we don't affect global random state
+        self._rng = random.Random(seed)
         self._cards: List[Card] = [Card(rank=r, suit=s) for s in range(4) for r in RANKS]
-        random.shuffle(self._cards)
+        self._rng.shuffle(self._cards)
 
     def draw(self) -> Card:
-        """
-        get one card from the deck, if finished, rebuilds the deck.
-         """
+        """Draw one card; if deck is empty, rebuild a fresh shuffled deck."""
         if not self._cards:
-            self.__init__()
+            self.__init__()  # fresh deck (non-deterministic)
         return self._cards.pop()
 
     def remaining(self) -> int:
         return len(self._cards)
 
+
 def hand_total(cards: List[Card]) -> int:
     """
-    calculate the total points of a hand.
+    Calculate the total points of a hand.
+    Ace is always 11 (per assignment rules).
     """
-    return sum(c.value() for c in cards)
+    total = 0
+    for c in cards:
+        if not (1 <= c.rank <= 13):
+            raise ValueError(f"Invalid rank: {c.rank}")
+        if not (0 <= c.suit <= 3):
+            raise ValueError(f"Invalid suit: {c.suit}")
+        total += c.value()
+    return total
