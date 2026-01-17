@@ -1,4 +1,3 @@
-# server/server.py
 import socket
 import sys
 
