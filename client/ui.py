@@ -1,3 +1,5 @@
+from common.protocol import Protocol
+
 def ask_rounds():
     while True:
         try:
@@ -6,21 +8,21 @@ def ask_rounds():
                 return rounds
         except ValueError:
             pass
-        print("Invalid input.")
+        print("Invalid input. Please enter a number between 1 and 255.")
 
-def ask_decision():
+def ask_decision() -> bytes:
     while True:
-        choice = input("Hit or stand? ").strip().lower()
-        if choice in ('hit', 'h'):
-            return b'Hittt'
-        if choice in ('stand', 's'):
-            return b'Stand'
+        decision = input("Hit or stand? ").strip().lower()
+        if decision in ("hit", "h"):
+            return b"Hittt"
+        if decision in ("stand", "s"):
+            return b"Stand"
         print("Please type Hit or Stand.")
 
-def print_result(result):
-    if result == 0x3:
+def print_result(result: int):
+    if result == Protocol.RES_WIN:
         print("You WIN!")
-    elif result == 0x2:
+    elif result == Protocol.RES_LOSS:
         print("You LOSE.")
-    elif result == 0x1:
-        print("TIE.")
+    elif result == Protocol.RES_TIE:
+        print("It's a TIE.")
