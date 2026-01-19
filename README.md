@@ -58,7 +58,9 @@ If it passes the tests — it’s not just “working”… it’s **solid**.
 ## 🧠 Architecture
 
 ### UDP → TCP Flow
-```text
+``text
+
+
          UDP Broadcast (Offer)
 Server  ----------------------->  Client
   |                                  |
@@ -69,7 +71,8 @@ Server  ----------------------->  Client
                                      |
                                 gameplay loop
                                Hit / Stand / State
-'''text
+
+
 
 Layers
 
