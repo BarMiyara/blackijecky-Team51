@@ -73,8 +73,7 @@ client/ → UDP listener, TCP session handler, terminal UI
 common/ → shared protocol encode/decode + cards utilities
 
 📁 Project Structure
-text
-Copy code
+```text
 blackijecky-Team51/
 ├─ README.md
 ├─ client/
@@ -102,6 +101,8 @@ blackijecky-Team51/
    ├─ test_edge_invalid_rounds.py
    ├─ test_edge_invalid_decision.py
    └─ test_edge_disconnect_midround.py
+```
+
 ✅ Requirements
 Python 3.x
 
