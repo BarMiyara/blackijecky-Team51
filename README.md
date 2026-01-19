@@ -4,9 +4,14 @@
   <b>UDP Discovery</b> • <b>TCP Sessions</b> • <b>Shared Protocol</b> • <b>Edge-Case Tested</b>
 </p>
 
+<<<<<<< HEAD
 <p align="center">
   Client–server Blackjack in Python — discover servers via <b>UDP offers</b>, play via <b>TCP sessions</b>, with a shared <b>protocol layer</b> and a tough test suite.
 </p>
+=======
+**A clean client–server Blackjack implementation in Python**  
+Designed with a shared protocol layer, UDP offer discovery, TCP game sessions, and edge-case tested networking behavior.
+>>>>>>> b49776d (Add demo gif)
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3.x-blue" />
@@ -16,6 +21,7 @@
   <img alt="Status" src="https://img.shields.io/badge/Status-stable-success" />
 </p>
 
+<<<<<<< HEAD
 <p align="center">
   <a href="#-quick-run">Quick Run</a> •
   <a href="#-architecture">Architecture</a> •
@@ -23,6 +29,13 @@
   <a href="#-tests">Tests</a> •
   <a href="#-troubleshooting">Troubleshooting</a>
 </p>
+=======
+<!-- Badges -->
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Architecture](https://img.shields.io/badge/Architecture-Client%20%7C%20Server%20%7C%20Common-success)
+![Networking](https://img.shields.io/badge/Networking-UDP%20Discovery%20%2B%20TCP%20Gameplay-purple)
+![Tests](https://img.shields.io/badge/Tests-pytest%20%7C%20edge%20cases-brightgreen)
+>>>>>>> b49776d (Add demo gif)
 
 <hr/>
 
@@ -30,13 +43,27 @@
 <p>
   <img src="assets/demo.gif" alt="Demo" width="900" />
 
+<<<<<<< HEAD
 </p>
 
 
 <hr/>
+=======
+## ⚡ Overview
+**BlackiJecky** is a Python **client–server Blackjack** project built around real networking patterns:
+
+✅ **UDP discovery** — server broadcasts game offers  
+✅ **TCP sessions** — reliable gameplay communication  
+✅ **Shared protocol layer** — one source of truth under `common/`  
+✅ **Terminal UX** — readable UI + clean player input loop  
+✅ **Serious tests** — concurrency + malformed packets + partial reads + timeouts + disconnects  
+
+If it passes the test suite — it's not just working… it’s **solid**.
+>>>>>>> b49776d (Add demo gif)
 
 <h2>⚡ Overview</h2>
 
+<<<<<<< HEAD
 <ul>
   <li>✅ <b>UDP discovery</b> — server broadcasts offers, clients auto-detect and join</li>
   <li>✅ <b>TCP sessions</b> — reliable gameplay communication per client</li>
@@ -55,15 +82,32 @@ python3 client/client.py
 ```
 <hr/> <h2 id="-architecture">🧠 Architecture</h2> <h3>UDP → TCP Flow</h3>
     
+=======
+## 🧠 Architecture (High-Level)
+The project is intentionally split into three layers:
+
+- `server/` → networking + session orchestration
+- `client/` → discovery + TCP session + UI
+- `common/` → shared protocol + cards logic (used by both ends)
+
+### 🔁 Communication Flow (UDP → TCP)
+```text
+>>>>>>> b49776d (Add demo gif)
          UDP Broadcast (Offer)
 ```text         
 Server  ----------------------->  Client
   |                                  |
+<<<<<<< HEAD
+=======
+  |                           picks offer
+  |                                  |
+>>>>>>> b49776d (Add demo gif)
   |          TCP Connect + Session   |
   +--------------------------------> |
                                      |
                                 gameplay loop
                                Hit / Stand / State
+<<<<<<< HEAD
 ```
 <h3>Layers</h3> <ul> <li><code>server/</code> — offer broadcasting, TCP accept loop, session management</li> <li><code>client/</code> — UDP listener, TCP session handler, terminal UI</li> <li><code>common/</code> — shared protocol encode/decode + cards utilities</li> </ul> <hr/> <h2 id="-project-structure">📁 Project Structure</h2>
 
@@ -155,3 +199,7 @@ client  common  server  tests  README.md
 
 <h3>Demo image is broken</h3> <p> Either add <code>assets/demo.png</code> or remove the Demo section image line. </p> <h3>Client can’t find offers</h3> <p> UDP broadcast may be blocked on some networks. Try running server &amp; client on the same machine first. </p> <h3>Client can’t connect</h3> <p> Start the server first, then run the client. Check firewall/network restrictions if needed. </p> <hr/> <h2>🧭 Roadmap</h2> <ul> <li>[ ] Add <code>requirements.txt</code></li> <li>[ ] Add GitHub Actions CI (run <code>pytest</code> on push/PR)</li> <li>[ ] Add protocol message table (opcode → meaning)</li> <li>[ ] Add GIF demo (terminal gameplay)</li> </ul> <hr/> <h2>👥 Team</h2> <ul> <li><b>Bar Miyara</b> — https://github.com/BarMiyara</li> <li><b>Yuval Pariente</b> — https://github.com/yuvalpariente</li> </ul> <hr/> <h2 id="-license">📄 License</h2> <p>Educational project.</p> 
 
+=======
+
+```
+>>>>>>> b49776d (Add demo gif)
