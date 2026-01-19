@@ -1,63 +1,62 @@
-# 🃏 BlackiJecky — Team51
-### UDP Discovery • TCP Sessions • Protocol-Driven Blackjack • Hardcore Test Suite
+<h1 align="center">🃏 BlackiJecky — Team51</h1>
 
-**Client–server Blackjack in Python**  
-Server discovery via **UDP offers**, gameplay over **TCP sessions**, shared **protocol layer**, and **aggressive edge-case testing**.
+<p align="center">
+  <b>UDP Discovery</b> • <b>TCP Sessions</b> • <b>Shared Protocol</b> • <b>Edge-Case Tested</b>
+</p>
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Networking](https://img.shields.io/badge/Networking-UDP%20Discovery%20%2B%20TCP%20Sessions-purple)
-![Architecture](https://img.shields.io/badge/Architecture-Client%20%7C%20Server%20%7C%20Common-success)
-![Tests](https://img.shields.io/badge/Tests-pytest-brightgreen)
-![Status](https://img.shields.io/badge/Status-Stable-success)
+<p align="center">
+  Client–server Blackjack in Python — discover servers via <b>UDP offers</b>, play via <b>TCP sessions</b>, with a shared <b>protocol layer</b> and a tough test suite.
+</p>
 
----
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.x-blue" />
+  <img alt="Networking" src="https://img.shields.io/badge/Networking-UDP%20%2B%20TCP-purple" />
+  <img alt="Architecture" src="https://img.shields.io/badge/Architecture-client%20%7C%20server%20%7C%20common-success" />
+  <img alt="Tests" src="https://img.shields.io/badge/Tests-pytest-brightgreen" />
+  <img alt="Status" src="https://img.shields.io/badge/Status-stable-success" />
+</p>
 
-## 🎬 Demo
-> Drop a screenshot/GIF here to instantly make the repo look premium.
+<p align="center">
+  <a href="#-quick-run">Quick Run</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-project-structure">Structure</a> •
+  <a href="#-tests">Tests</a> •
+  <a href="#-troubleshooting">Troubleshooting</a>
+</p>
 
-![Demo](assets/demo.png)
+<hr/>
 
----
+<h2>🎬 Demo</h2>
+<p>
+  <img src="assets/demo.png" alt="Demo" width="900" />
+</p>
+<p><i>If the image is broken, add <code>assets/demo.png</code> or remove this Demo section.</i></p>
 
-## 📌 Table of Contents
-- [⚡ Overview](#-overview)
-- [🧠 Architecture](#-architecture)
-- [📁 Project Structure](#-project-structure)
-- [✅ Requirements](#-requirements)
-- [🚀 Quickstart](#-quickstart)
-- [▶️ Running the Project](#️-running-the-project)
-- [🕹️ Gameplay](#️-gameplay)
-- [🧪 Tests](#-tests)
-- [🧨 Edge Cases Covered](#-edge-cases-covered)
-- [🔐 Protocol Layer](#-protocol-layer)
-- [🧯 Troubleshooting](#-troubleshooting)
-- [🧭 Roadmap](#-roadmap)
-- [👥 Team](#-team)
-- [📄 License](#-license)
+<hr/>
 
----
+<h2>⚡ Overview</h2>
 
-## ⚡ Overview
-**BlackiJecky** is a Python **client–server Blackjack** project built like a real networking app:
+<ul>
+  <li>✅ <b>UDP discovery</b> — server broadcasts offers, clients auto-detect and join</li>
+  <li>✅ <b>TCP sessions</b> — reliable gameplay communication per client</li>
+  <li>✅ <b>Shared <code>common/</code> layer</b> — protocol + cards logic (single source of truth)</li>
+  <li>✅ <b>Terminal UI</b> — clean rounds, hands, totals, and actions</li>
+  <li>✅ <b>Hardcore testing</b> — malformed packets, partial reads, slow clients, disconnects, concurrency</li>
+</ul>
 
-- ✅ **UDP Discovery** — server broadcasts offers, clients auto-detect and join  
-- ✅ **TCP Sessions** — reliable gameplay communication per session  
-- ✅ **Shared `common/` layer** — one source of truth for protocol + cards  
-- ✅ **Terminal UI** — clean rounds, hands, totals, and actions  
-- ✅ **Hardcore tests** — nasty real-world networking edge cases included  
+<hr/>
 
-If it passes the tests — it’s not just “working”… it’s **solid**.
+<h2 id="-quick-run">🚀 Quick Run</h2>
 
----
-
-## 🧠 Architecture
-
-### UDP → TCP Flow
-```text
+```bash
+python3 server/Server.py
+python3 client/client.py
+```
+<hr/> <h2 id="-architecture">🧠 Architecture</h2> <h3>UDP → TCP Flow</h3>
+    
          UDP Broadcast (Offer)
+```text         
 Server  ----------------------->  Client
-  |                                  |
-  |                           receives offer
   |                                  |
   |          TCP Connect + Session   |
   +--------------------------------> |
@@ -65,15 +64,9 @@ Server  ----------------------->  Client
                                 gameplay loop
                                Hit / Stand / State
 ```
-Layers
-server/ → offer broadcasting, TCP accept loop, session management
+<h3>Layers</h3> <ul> <li><code>server/</code> — offer broadcasting, TCP accept loop, session management</li> <li><code>client/</code> — UDP listener, TCP session handler, terminal UI</li> <li><code>common/</code> — shared protocol encode/decode + cards utilities</li> </ul> <hr/> <h2 id="-project-structure">📁 Project Structure</h2>
 
-client/ → UDP listener, TCP session handler, terminal UI
-
-common/ → shared protocol encode/decode + cards utilities
-
-📁 Project Structure
-```text
+```text 
 blackijecky-Team51/
 ├─ README.md
 ├─ client/
@@ -103,135 +96,61 @@ blackijecky-Team51/
    └─ test_edge_disconnect_midround.py
 ```
 
-✅ Requirements
-Python 3.x
+<hr/> <h2>✅ Requirements</h2> <ul> <li><b>Python 3.x</b></li> <li>Recommended: <b>venv</b></li> <li>Tests: <b>pytest</b></li> </ul> <hr/> <h2>🔧 Setup</h2>
 
-Recommended: venv
-
-Tests: pytest
-
-🚀 Quickstart
-1) Clone
-bash
-Copy code
+```bash
 git clone https://github.com/BarMiyara/blackijecky-Team51.git
 cd blackijecky-Team51
-2) Setup virtual environment
-bash
-Copy code
+
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-3) Install dependencies
-bash
-Copy code
+
 pip install pytest
-▶️ Running the Project
-Run Server
-bash
-Copy code
+
+```
+
+<hr/> <h2>▶️ Running the Project</h2> <h3>Run Server</h3>
+
+```bash
 python3 server/Server.py
-Run Client (new terminal)
-bash
-Copy code
+
+```
+<h3>Run Client (new terminal)</h3>
+
+```bash
 python3 client/client.py
-🕹️ Gameplay
-The terminal UI shows:
 
-Dealer hand
+```
+<hr/> <h2 id="-tests">🧪 Tests</h2> <h3>Run everything</h3>
 
-Your hand
-
-Totals + round counter
-
-Wins / losses / ties
-
-Actions:
-
-Hit
-
-Stand
-
-🧪 Tests
-Run everything:
-
-bash
-Copy code
+```bash
 pytest -q
-Verbose:
 
-bash
-Copy code
+```
+<h3>Verbose</h3>
+
+```bash
 pytest -v
-Run a single file:
 
-bash
-Copy code
+```
+<h3>Run a single file</h3>
+
+```bash
 pytest -q tests/test_protocol.py
-🧨 Edge Cases Covered
-The test suite is designed to catch real-world networking failures:
 
-✅ multiple clients / concurrency
+```
+<hr/> <h2>🧨 Edge Cases Covered</h2> <ul> <li>✅ multiple clients / concurrency</li> <li>✅ malformed requests</li> <li>✅ invalid player decisions</li> <li>✅ partial TCP reads (messages split across reads)</li> <li>✅ slow clients / timeouts</li> <li>✅ invalid round values</li> <li>✅ disconnect mid-round</li> </ul> <hr/> <h2>🔐 Protocol Layer</h2> <ul> <li><code>common/protocol.py</code> is the single source of truth for:</li> <li>encoding outgoing messages</li> <li>decoding incoming messages</li> <li>validating message structure + correctness</li> </ul> <p> Both client and server use it — no duplicated protocol logic. </p> <hr/> <h2 id="-troubleshooting">🧯 Troubleshooting</h2> <h3>Imports fail (<code>ModuleNotFoundError</code>)</h3> <p>Run from repo root:</p>
 
-✅ malformed requests
-
-✅ invalid player decisions
-
-✅ partial TCP reads (messages split across reads)
-
-✅ slow clients / timeouts
-
-✅ invalid round values
-
-✅ disconnect mid-round
-
-🔐 Protocol Layer
-The stability comes from one shared source of truth:
-
-common/protocol.py handles encode/decode
-
-validates structure + correctness
-
-prevents duplicated logic between client and server
-
-🧯 Troubleshooting
-Imports fail (ModuleNotFoundError)
-Run from repo root:
-
-bash
-Copy code
+```bash
 pwd
 ls
-You should see:
+```
+<p>You should see:</p>
 
-text
-Copy code
+```text
 client  common  server  tests  README.md
-Client can’t find offers
-UDP broadcast may be blocked on some networks.
-Try running server & client on the same machine first.
+```
 
-Client can’t connect
-Start the server first, then run the client.
-Check firewall/network restrictions if needed.
+<h3>Demo image is broken</h3> <p> Either add <code>assets/demo.png</code> or remove the Demo section image line. </p> <h3>Client can’t find offers</h3> <p> UDP broadcast may be blocked on some networks. Try running server &amp; client on the same machine first. </p> <h3>Client can’t connect</h3> <p> Start the server first, then run the client. Check firewall/network restrictions if needed. </p> <hr/> <h2>🧭 Roadmap</h2> <ul> <li>[ ] Add <code>requirements.txt</code></li> <li>[ ] Add GitHub Actions CI (run <code>pytest</code> on push/PR)</li> <li>[ ] Add protocol message table (opcode → meaning)</li> <li>[ ] Add GIF demo (terminal gameplay)</li> </ul> <hr/> <h2>👥 Team</h2> <ul> <li><b>Bar Miyara</b> — https://github.com/BarMiyara</li> <li><b>Yuval Pariente</b> — https://github.com/yuvalpariente</li> </ul> <hr/> <h2 id="-license">📄 License</h2> <p>Educational project.</p> 
 
-🧭 Roadmap
- Add requirements.txt
-
- Add GitHub Actions CI (run pytest on push/PR)
-
- Add protocol message table (opcode → meaning)
-
- Add GIF demo (terminal gameplay)
-
-👥 Team
-Bar Miyara — https://github.com/BarMiyara
-
-Yuval Pariente — https://github.com/yuvalpariente
-
-📄 License
-Educational project.
-
-makefile
-Copy code
-::contentReference[oaicite:0]{index=0}
