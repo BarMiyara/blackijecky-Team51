@@ -28,9 +28,10 @@
 
 <h2>🎬 Demo</h2>
 <p>
-  <img src="assets/demo.png" alt="Demo" width="900" />
+  <img src="assets/demo.gif" alt="Demo" width="900" />
+
 </p>
-<p><i>If the image is broken, add <code>assets/demo.png</code> or remove this Demo section.</i></p>
+
 
 <hr/>
 
